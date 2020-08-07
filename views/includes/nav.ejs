@@ -19,17 +19,17 @@
                     >Home <span class="sr-only">(current)</span></a
                 >
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= path === '/docs' ? 'active' : '' %>">
                 <a class="nav-link" href="/docs">Docs</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= path === '/download-app' ? 'active' : '' %>">
                 <a href="/download-app" class="nav-link">Download App</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item <%= path === '/about-us' ? 'active' : '' %> dropdown">
                 <a
                     class="nav-link dropdown-toggle"
-                    href="#"
+                    href="/about-us"
                     id="navbarDropdown"
                     role="button"
                     data-toggle="dropdown"
@@ -39,18 +39,18 @@
                     About Us
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/about-us/about-author">About the Authors</a>
+                    <a class="dropdown-item" href="/about-us">About the Authors</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/about-us/contact-us">Contact Us</a>
+                    <a class="dropdown-item" href="/contact-us">Contact Us</a>
                 </div>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item <%= path === '/login' ? 'active' : '' %>">
                 <a href="/login" class="nav-link">Login</a>
             </li>
-            <li class="nav-item">
-                <a href="/register" class="nav-link">Register</a>
+            <li class="nav-item <%= path === '/register' ? 'active' : '' %>">
+                <a href="/register"  class="nav-link">Register</a>
             </li>
         </ul>
     </div>

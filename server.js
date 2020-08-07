@@ -34,8 +34,11 @@ app.use(
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
-// Routes
-
+// Web Routes
+app.use('/download-app', require('./routes/web/download'));
+app.use('/docs', require('./routes/web/docs'));
+app.use('/', require('./routes/web/about'));
+app.use('/', require('./routes/web/auth'));
 app.get('/', (req, res, next) => {
     return res.render('index/index.ejs', { path: '/' });
 })
