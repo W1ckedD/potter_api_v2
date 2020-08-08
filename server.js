@@ -6,6 +6,8 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const ConnectDB = require('./config/db');
 const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 
 dotenv.config({ path: './config/config.env' });
 
@@ -19,7 +21,10 @@ const store = new MongoDBStore({
 });
 
 // Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
+app.use(cookieParser('SECRET_STR'))
 app.use(
     session({
         secret: process.env.SECRET_KEY,
@@ -31,6 +36,7 @@ app.use(
         saveUninitialized: false,
     })
 );
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 

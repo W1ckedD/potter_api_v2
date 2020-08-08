@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
     apiKey: {
         type: String,
         unique: true
+    },
+    verifyToken: String,
+    verifyTokenExpiryDate: Date,
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 });
 
