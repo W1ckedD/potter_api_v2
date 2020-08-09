@@ -45,6 +45,19 @@
                 </div>
             </li>
         </ul>
+        <% if (isLoggedIn) { %>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item <%= path === '/dashboard' ? 'active' : '' %>">
+                    <a href="/dashboard" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item <%= path === '/register' ? 'active' : '' %>">
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn nav-link">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        <% } else { %>    
         <ul class="navbar-nav ml-auto">
             <li class="nav-item <%= path === '/login' ? 'active' : '' %>">
                 <a href="/login" class="nav-link">Login</a>
@@ -53,5 +66,6 @@
                 <a href="/register"  class="nav-link">Register</a>
             </li>
         </ul>
+        <% } %>
     </div>
 </nav>

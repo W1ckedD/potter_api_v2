@@ -8,7 +8,7 @@ const ConnectDB = require('./config/db');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-
+const csrf = require('csurf');
 dotenv.config({ path: './config/config.env' });
 
 ConnectDB();
@@ -36,9 +36,19 @@ app.use(
         saveUninitialized: false,
     })
 );
+app.use(csrf());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
+app.use((req, res, next) => {
+    res.locals.isLoggedIn = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
+    next();
+})
+
+// API Routes
+app.use('/api/v2/characters', require('./routes/api/characters'));
+
 
 // Web Routes
 app.use('/download-app', require('./routes/web/download'));

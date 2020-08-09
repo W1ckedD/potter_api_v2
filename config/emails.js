@@ -1,5 +1,5 @@
 exports.verifyAccountEmail = (token, userEmail) => ({
-    from: process.env.API_EMAIL,
+    from: `Potter API V2<${process.env.API_EMAIL}>`,
     to: userEmail,
     subject: 'Verify Potter API V2 Account',
     html: `<h1>
@@ -8,7 +8,7 @@ exports.verifyAccountEmail = (token, userEmail) => ({
 });
 
 exports.newUserRegisterd = user => ({
-    from: process.env.API_EMAIL,
+    from: `Potter API V2<${process.env.API_EMAIL}>`,
     to: process.env.PERSONAL_EMAIL,
     subject: `New User Registerd at ${user.createdAt}`,
     html: `<p>email: ${user.email}</p>

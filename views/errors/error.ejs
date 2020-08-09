@@ -1,7 +1,8 @@
 <%- include('../includes/top.ejs') %>
 <%- include('../includes/nav.ejs') %>
 <div class="container">
-    <h3 class="text-center">Dashboard</h3>
-    <h4><strong>Your API-KEY: </strong><%= user.apiKey %></h4>
+    <div class="alert alert-danger">
+        <%= errorMessage %>
+    </div>
 </div>
 <%- include('../includes/bottom.ejs') %>
